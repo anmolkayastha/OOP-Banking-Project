@@ -6,7 +6,7 @@ Will use Boostrap to quicken the process.
 
 
 An person's account is represented by an objecto of class 'bankAccount'.
-The object has methods to deposit, withdraw to their account
+The object has methods to deposit, withdraw to their account.
 Also, they can transfer funds to other accounts if they sufficient funds.
 
 
