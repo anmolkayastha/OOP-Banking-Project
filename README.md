@@ -1,8 +1,11 @@
 # OOP-Banking-Project
-A project to practise object-oriented programming along with manipulating DOM elements
+A project to practise object-oriented programming along with manipulating DOM elements.
+
+Will avoid manually setting up CSS as much as possible
+Will use Boostrap to quicken the process.
 
 
-An person's account is represented by an objecto of class 'BankAccount'
+An person's account is represented by an objecto of class 'bankAccount'.
 The object has methods to deposit, withdraw to their account
 Also, they can transfer funds to other accounts if they sufficient funds.
 
