@@ -1,7 +1,7 @@
 # OOP-Banking-Project
 A project to practise object-oriented programming along with manipulating DOM elements.
 
-Will avoid manually setting up CSS as much as possible
+Will avoid manually setting up CSS as much as possible.
 Will use Boostrap to quicken the process.
 
 
