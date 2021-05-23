@@ -16,12 +16,12 @@ const addUserBtn = document.getElementById('add-user');
 addUserBtn.addEventListener('click', addUser);
 
 function addUser()
-{
+{   
     console.log('User added!');
 
     formName = document.getElementById('form-name').value;
     formBalance = document.getElementById('form-balance').value;
-
+    usersCount = document.getElementById('users-list').getElementsByTagName("li").length;
     // Instantiate a bankAccount object
     const account = new BankAccount(formName, formBalance);
    
@@ -32,7 +32,7 @@ function addUser()
     // Add class
     li.className = 'list-unstyled list-group-item';
     // Add HTML
-    li.innerHTML = `<div id="user1">
+    li.innerHTML = `<div id=user-${usersCount+1}>
     <div class="d-flex p-2 justify-content-around align-items-center">
         <div id="account-name">
             <label for="account-name"><strong>Account:</strong></label>
@@ -92,33 +92,75 @@ document.getElementById('users-list').appendChild(li);
     // Update the value
     // Display the updated value by changing CSS
     // Reset input field after
-deposit.addEventListener('click', () => {
 
-    // showDepositGroup();
-    showGroup('deposit');
-    depAmt = document.getElementById('deposit-amt').value;  
-});
+// deposit.addEventListener('click', () => {
 
-withdraw.addEventListener('click', () => {
-  
-    showGroup('withdraw');
-    depAmt = document.getElementById('withdraw-amt').value;  
-});
+//     // showDepositGroup();
+//     showGroup('deposit');
+//     depAmt = document.getElementById('deposit-amt').value;
+// });
 
-transfer.addEventListener('click', () => {
-  
-    showGroup('transfer');
-    depAmt = document.getElementById('transfer-amt').value;
-});
+// Listen for deposit, withdraw and transfer
+document.getElementById('users-list').addEventListener('click', enableDeposit);
+// document.getElementById('users-list').addEventListener('click', enableWithdraw);
+// document.getElementById('users-list').addEventListener('click', enableTransfer);
+
+function enableDeposit(e){
+    // console.log("Deposit works");
+    const event = e
+    if(e.target.classList.contains('deposit-btn'))
+    {
+        console.log('deposit button works');
+        
+        showGroup('deposit', event);
+    }
+    e.preventDefault();
+}
+
+function enableWithdraw(e){
+    console.log("Withdraw works");
+    const event = e
+    if(e.target.classList.contains('withdraw-btn'))
+    {   
+        showGroup('withdraw', event);
+    }
+    e.preventDefault();
+}
+
+function enableTransfer(e){
+    console.log("Transfer works");
+    const event = e
+    if(e.target.classList.contains('transfer-btn'))
+    {   
+        showGroup('transfer', event);
+    }
+    e.preventDefault();
+}
 
 
 // Change CSS for deposit, withdraw and transfer groups
 // type = 'deposit' or 'withdaw' or transfer
-function showGroup(type)
-{
-    document.querySelector('.pop-up').classList.toggle('d-none');
+function showGroup(type, e)
+{   
+    // Select the div that holds the deposit, withdraw and transfer buttons
+    const dropDown = e.target.parentElement.nextElementSibling;
+    console.log(dropDown);
+    dropDown.classList.toggle('d-none');
+    
     switch(type){
         case 'deposit':
+        
+        console.log(dropDown.childNodes);
+
+        //  CONTINUE HERE TO GET CHILD ELEMENTS AND CHECK FOR CLASS NAME WITH DEPOSIT
+
+        // var nodes = document.getElementById('ID_of_parent').childNodes;
+        // for(var i=0; i<nodes.length; i++) {
+        // if (nodes[i].nodeName.toLowerCase() == 'div') {
+        //  nodes[i].style.background = color;
+        //   }
+        // }
+        
         document.getElementById(`${type}-group`).classList.remove('invisible');
         document.getElementById(`${type}-group`).classList.add('visible');
         document.getElementById('withdraw-group').classList.add('invisible');
@@ -146,7 +188,9 @@ function showGroup(type)
 }
 
 
-
+// usersCount = document.getElementById('users-list').childElementCount;
+// console.log("Numbers of users: ", usersCount);
+// console.log(document.getElementById('users-list').getElementsByTagName("li").length);
 
 
 
