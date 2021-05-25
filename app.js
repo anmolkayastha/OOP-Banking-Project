@@ -51,7 +51,7 @@ function addUser()
         <button type="button" id="transfer" class="btn btn-secondary">Transfer</button>
     </div>
 
-    <div id="pop-up" class="d-flex justify-content-around d-none pop-up">
+    <div class="d-flex justify-content-around d-none">
 
         <div id="deposit-group" class="invisible">
 
@@ -102,23 +102,19 @@ document.getElementById('users-list').appendChild(li);
 
 // Listen for deposit, withdraw and transfer
 document.getElementById('users-list').addEventListener('click', enableDeposit);
-// document.getElementById('users-list').addEventListener('click', enableWithdraw);
-// document.getElementById('users-list').addEventListener('click', enableTransfer);
+document.getElementById('users-list').addEventListener('click', enableWithdraw);
+document.getElementById('users-list').addEventListener('click', enableTransfer);
 
 function enableDeposit(e){
-    // console.log("Deposit works");
     const event = e
     if(e.target.classList.contains('deposit-btn'))
-    {
-        console.log('deposit button works');
-        
+    {   
         showGroup('deposit', event);
     }
     e.preventDefault();
 }
 
 function enableWithdraw(e){
-    console.log("Withdraw works");
     const event = e
     if(e.target.classList.contains('withdraw-btn'))
     {   
@@ -128,7 +124,6 @@ function enableWithdraw(e){
 }
 
 function enableTransfer(e){
-    console.log("Transfer works");
     const event = e
     if(e.target.classList.contains('transfer-btn'))
     {   
@@ -144,13 +139,16 @@ function showGroup(type, e)
 {   
     // Select the div that holds the deposit, withdraw and transfer buttons
     const dropDown = e.target.parentElement.nextElementSibling;
-    console.log(dropDown);
     dropDown.classList.toggle('d-none');
+    
+    depositGroup = e.target.parentElement.nextElementSibling.children[0];
+    withdrawGroup = e.target.parentElement.nextElementSibling.children[1];
+    transferGroup = e.target.parentElement.nextElementSibling.children[2];
     
     switch(type){
         case 'deposit':
         
-        console.log(dropDown.childNodes);
+        // console.log(dropDown.childNodes);
 
         //  CONTINUE HERE TO GET CHILD ELEMENTS AND CHECK FOR CLASS NAME WITH DEPOSIT
 
@@ -161,39 +159,31 @@ function showGroup(type, e)
         //   }
         // }
         
-        document.getElementById(`${type}-group`).classList.remove('invisible');
-        document.getElementById(`${type}-group`).classList.add('visible');
-        document.getElementById('withdraw-group').classList.add('invisible');
-        document.getElementById('transfer-group').classList.add('invisible');
+        depositGroup.classList.remove('invisible');
+        depositGroup.classList.add('visible');
+        withdrawGroup.classList.add('invisible');
+        transferGroup.classList.add('invisible');
         break;
     }
 
     switch(type){
         case 'withdraw':
-        document.getElementById(`${type}-group`).classList.remove('invisible');
-        document.getElementById(`${type}-group`).classList.add('visible');
-        document.getElementById('deposit-group').classList.add('invisible');
-        document.getElementById('transfer-group').classList.add('invisible');
+            withdrawGroup.classList.remove('invisible');
+            withdrawGroup.classList.add('visible');       
+            depositGroup.classList.add('invisible');
+            transferGroup.classList.add('invisible');
         break;
     }
 
     switch(type){
         case 'transfer':
-        document.getElementById(`${type}-group`).classList.remove('invisible');
-        document.getElementById(`${type}-group`).classList.add('visible');
-        document.getElementById('deposit-group').classList.add('invisible');
-        document.getElementById('withdraw-group').classList.add('invisible');
+            transferGroup.classList.remove('invisible');
+            transferGroup.classList.add('visible');
+            depositGroup.classList.add('invisible');
+            withdrawGroup.classList.add('invisible');
         break;
     }
 }
-
-
-// usersCount = document.getElementById('users-list').childElementCount;
-// console.log("Numbers of users: ", usersCount);
-// console.log(document.getElementById('users-list').getElementsByTagName("li").length);
-
-
-
 
 
 // when 'add user' take input from name and balance form
