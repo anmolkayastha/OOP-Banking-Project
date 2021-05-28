@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
+    <title>OOP Banking Project</title>
+
+</head>
+
+
+<body>
+    <div class="container p-5">
+        <div class="row align-items-center justify-content-center bg-light p-3">
+
+            <div class="row text-center">
+                <h1>OOP Banking</h1>
+                <p class="lead mb-4">Deposit, withdraw or transfer funds to/from your account</p>
+            </div>
+
+             <!-- Add user -->
+             <div id="new-user" class="d-flex text-center p-3 w-75">
+                 <div class="form-group col">
+                     <div class="row mb-3">
+                            <div class="col s6">
+                                <label for="user-name" class="p-1">Name: </label>
+                                <input type="text" class="form-control" id="form-name" placeholder="Enter name"></label>
+                            </div>
+                            <div class="col s6">
+                                <label for="user-balance" class="p-1">Balance: </label>
+                                <input type="number" class="form-control" id="form-balance" placeholder="Enter balance"></label>
+                            </div>
+                    </div>
+                    <button type="button" id="add-user" class="btn btn-primary">Add User</button>
+                 </div>
+                
+            </div>
+
+            <div>
+                <ul id="users-list" class="list-group">
+                    
+                    
+                    <li class="list-unstyled list-group-item">
+                        <!-- <div id="user1" class="container w-75 p-3 border border-secondary rounded bg-white"> -->
+                        <div id="user-1">
+                            <div class="d-flex p-2 justify-content-around align-items-center">
+                                <div id="account-name">
+                                    <label for="account-name"><strong>Account:</strong></label>
+                                    <label id="account-name">John Doe</label>
+                                </div>
+                                <div id="balance">
+                                    <label for="balance"><strong>Balance:</strong></label>
+                                    <label id="balance-amount">$200.00</label>
+                                </div>
+                            </div>
+
+
+                            <div id="balance-buttons" class="d-flex justify-content-around">
+                                <button  class="btn btn-secondary btn deposit-btn">Deposit</button>
+                                <button class="btn btn-secondary btn withdraw-btn">Withdraw</button>
+                                <button class="btn btn-secondary btn transfer-btn">Transfer</button>
+                                <!-- <button type="button" id="transfer" class="btn btn-secondary">Transfer</button> -->
+                            </div>
+
+                            <div class="d-flex justify-content-around d-none user1">
+        
+                                <div id="deposit-group" class="invisible">
+
+                                    <div id="deposit-control" class="d-flex flex-column justify-content-center p-2 w-75">
+                                        <span><strong>Deposit Amount:</strong></span>
+                                        <input type="number" id="deposit-amt" class="w-75">
+                                        <button type="button" id="deposit-confirm" class="deposit-confirm btn btn-primary btn-sm self-align-end w-50 mt-2">Confirm</button>
+                                    </div>
+                                </div>
+                            
+                                <div id="withdraw-group" class="invisible">
+                                    
+                                    <div id="withdraw-control" class="d-flex flex-column justify-content-center p-2 w-75">
+                                        <span class><strong>Withdraw Amount:</strong></span>
+                                        <input type="number" id="withdraw-amt" class="w-75">
+                                        <button type="button" id="withdraw-confirm" class="withdraw-confirm btn btn-primary btn-sm self-align-end w-50 mt-2">Confirm</button>
+                                    </div>
+                                </div>
+                               
+                                <div id="transfer-group"  class="d-flex flex-column invisible">
+                                    <span class><strong>Transfer To:</strong></span>
+                                    <input type="text" id="transfer-to" class="w-75">
+                                    <span class><strong>Transfer Amount:</strong></span>
+                                    <input type="number" id="transfer-amt" class="w-50">
+                                    <button type="button" id="transfer-confirm" class="transfer-confirm btn btn-primary btn-sm self-align-end w-50 mt-2">Confirm</button>
+                                </div>
+                            </div>
+        
+                        </div>
+                    </li>
+
+                
+                </ul>
+                
+
+               
+            
+            </div>
+        </div>
+    </div>
+
+
+    
+    <script src="UI.js"></script>
+    <script src="/bankAccount.js"></script>
+    <script src="/app.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+</body>
+</html>
