@@ -88,7 +88,12 @@ class UI
             }, 3000);
     }
 
+    clearFields(field1, field2)
+    {
+        field1.value = '';
+        field2.value = '';
 
+    }
 
     // Change CSS for deposit, withdraw and transfer groups
     // type = 'deposit' or 'withdaw' or transfer
@@ -135,8 +140,6 @@ class UI
         // Update balance amount
         // Clear form for confirm input
     confirmDeposit(bankAccount, e){
-        console.log('Deposit confirmed!');
-
         let balanceHTML = e.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.children[1].lastElementChild;
 
         balanceHTML.innerHTML = "$" + Number(bankAccount.getBalance()).toFixed(2);
@@ -145,12 +148,28 @@ class UI
 
     confirmWithdraw(bankAccount, e)
     {
-        console.log('Deposit confirmed!');
-
         let balanceHTML = e.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.children[1].lastElementChild;
 
         balanceHTML.innerHTML = "$" + Number(bankAccount.getBalance()).toFixed(2);
         e.preventDefault();
+    }
+
+    confirmTransfer(senderBankAccount, receiverBankAccount, e)
+    {   
+        // Update bank balance for sender
+        e.target.parentElement.parentElement.parentElement.firstElementChild.lastElementChild.lastElementChild.innerHTML = `$${senderBankAccount.getBalance().toFixed(2)}`;
+
+        // Update balance for receiver
+        let usersList = document.querySelectorAll('ul li');
+        const arrayList = Array.from(usersList);
+
+
+        arrayList.forEach(function(user){
+            const receiverName = user.firstElementChild.firstElementChild.firstElementChild.children[1].innerHTML;
+            if(receiverName === receiverBankAccount.getName()){
+                user.firstElementChild.firstElementChild.lastElementChild.lastElementChild.innerHTML = `$${receiverBankAccount.getBalance().toFixed(2)}`;
+            }
+            });
     }
 
 
