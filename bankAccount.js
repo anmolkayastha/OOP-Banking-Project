@@ -24,19 +24,8 @@ class BankAccount{
 
     withdraw(amount)
     {
-        if(amount > this.balance)
-        {
-            console.log("Invalid amount entered");
-        }
-        else{
-            this.balance -= amount;
-        }
+      this.balance -= amount;   
     }
-
-    // transferBalance(name, amount)
-    // {
-
-    // }
 
 
 }
